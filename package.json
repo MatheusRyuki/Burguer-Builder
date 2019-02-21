@@ -1,6 +1,7 @@
 {
   "name": "burguer-builder",
   "version": "0.1.0",
+  "homepage": "https://matheusryuki.github.io/Burguer-Builder/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -57,7 +58,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

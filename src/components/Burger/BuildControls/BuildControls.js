@@ -5,11 +5,11 @@ import BuildControl from './BuildControl/BuildControl';
 const controls = [
     { label: 'Salada', type: 'salad'},
     { label: 'Bacon', type: 'bacon'},
-    { label: 'Queijo', type: 'Cheese'},
+    { label: 'Queijo', type: 'cheese'},
     { label: 'Carne', type: 'meat'},
 ];
 
-const buildControls = (props) => {
+const buildControls = (props) => (
   <div className={classes.BuildControls}>
     {controls.map(ctrl => (
       <BuildControl
@@ -20,6 +20,6 @@ const buildControls = (props) => {
        disabled={props.disabled[ctrl.type]}/>
     ))}
   </div>
-};
+);
 
 export default buildControls;
