@@ -36,7 +36,7 @@ class BurguerBuilder extends Component {
 
   removeIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
-    if (oldCount <== 0) {
+    if (oldCount <= 0) {
       return;
     }
     const updatedCount = oldCount - 1;
