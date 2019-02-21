@@ -30,7 +30,7 @@
 }
 
 .Seeds1::after {
-  content: ""
+  content: "";
   height: 100%;
   width: 100%;
   background-color: white;
@@ -43,7 +43,7 @@
 }
 
 .Seeds1::before {
-  content: ""
+  content: "";
   height: 100%;
   width: 100%;
   background-color: white;
@@ -68,7 +68,7 @@
 }
 
 .Seeds2::before {
-  content: ""
+  content: "";
   height: 100%;
   width: 100%;
   background-color: white;
