@@ -1,7 +1,8 @@
 import React from 'react';
+import classes from './Modal.css';
 
 const modal = (pros) => (
-  <div>
+  <div className={classes.Modal}>
     {props.children}
   </div>
 );
