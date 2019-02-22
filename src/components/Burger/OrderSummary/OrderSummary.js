@@ -2,7 +2,7 @@ import React from 'react';
 import Aux from '../../../hoc/HOC';
 import Button from '../../UI/Button/Button';
 
-const orderSummary = (pros) => {
+const orderSummary = (props) => {
   const ingredientsSummary = Object.keys(props.ingredients)
     .map(igKey => {
       return (

@@ -76,7 +76,7 @@ class BurguerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-    lalert('Seu pedido foi realizado!');
+    alert('Seu pedido foi realizado!');
   }
 
   render () {

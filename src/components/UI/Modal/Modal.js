@@ -4,7 +4,7 @@ import Aux from '../../../hoc/HOC';
 import Backdrop from '../Backdrop/Backdrop';
 
 
-const modal = (pros) =>
+const modal = (props) => (
   <Aux>
   <Backdrop show={props.show} clicked={props.modalClosed}/>
   <div
