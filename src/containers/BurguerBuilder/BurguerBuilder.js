@@ -6,19 +6,19 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICES = {
-  salad: 1.5,
-  cheese: 1.2,
-  meat: 3.9,
-  bacon: 2.1
+  salada: 1,
+  queijo: 0.8,
+  carne: 2.6,
+  bacon: 1.4
 };
 
 class BurguerBuilder extends Component {
   state = {
     ingredients: {
-      salad: 0,
+      salada: 0,
       bacon: 0,
-      cheese: 0,
-      meat: 0
+      queijo: 0,
+      carne: 0
     },
     totalPrice: 12,
     compravel: false,

@@ -18,13 +18,13 @@ class BurgerIngredient extends Component {
             </div>
           );
           break;
-        case ('meat'):
+        case ('carne'):
           ingredient = <div className={classes.Meat}></div>;
           break;
-        case ('cheese'):
+        case ('queijo'):
           ingredient = <div className={classes.Cheese}></div>;
           break;
-        case ('salad'):
+        case ('salada'):
           ingredient = <div className={classes.Salad}></div>;
           break;
         case ('bacon'):
