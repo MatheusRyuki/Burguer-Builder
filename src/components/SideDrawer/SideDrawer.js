@@ -3,12 +3,12 @@ import Logo from '../Logo/Logo';
 import NavigationItems from '../Navigation/NavigationItems/NavigationItems';
 import classes from './SideDrawer.css';
 import Backdrop from '../UI/Backdrop/Backdrop';
-import Aux from '../../hoc/HOC';
+import Aux from '../../hoc/Hoc/HOC';
 
 const sideDrawer = (props) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
   if (props.open) {
-    attachedClasses = [classes.SideDrawer, classes.Opem];
+    attachedClasses = [classes.SideDrawer, classes.Open];
   }
 
   return (
@@ -18,7 +18,7 @@ const sideDrawer = (props) => {
         <div className={classes.Logo}>
          <Logo/>
         </div>
-        <nav className={classes.DesktopOnly}>
+        <nav>
           <NavigationItems />
         </nav>
       </div>
