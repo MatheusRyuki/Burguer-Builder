@@ -22,7 +22,7 @@
   transform: translateX(0);
 }
 
-.Closed {
+.Close {
   transform: translateX(-100%);
 }
 

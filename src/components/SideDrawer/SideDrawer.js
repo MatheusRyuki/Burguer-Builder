@@ -8,7 +8,7 @@ import Aux from '../../hoc/HOC';
 const sideDrawer = (props) => {
   let attachedClasses = [classes.SideDrawer, classes.Close];
   if (props.open) {
-    attachedClasses = [classes.SideDrawer, classes.Opem];
+    attachedClasses = [classes.SideDrawer, classes.Open];
   }
 
   return (
@@ -18,7 +18,7 @@ const sideDrawer = (props) => {
         <div className={classes.Logo}>
          <Logo/>
         </div>
-        <nav className={classes.DesktopOnly}>
+        <nav>
           <NavigationItems />
         </nav>
       </div>
