@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
 import Order from '../../components/Order/Order';
+import axios from '../../axios-orders';
+import withErrorHandler from '../../withErrorHandler/withErrorHandler';
 
 class Orders extends Component {
+  state ={
+    orders: [],
+    loading: true
+  }
+  componentDidMount() {
+    axios.get('/orders.json')
+      .then(res => {
+        const fetchedOrders = [];
+
+        for (let key in res.data) {
+          fetchedOrders.push({
+            ...res.data[key],
+            id: key
+          });
+        }
+
+        this.setSyate({loading: false, orders: fetchedOrders});
+      })
+      .catch(err => {
+        this.setSyate({loading: false});
+      });
+  }
+
   render () {
     return (
       <div>
@@ -11,4 +36,4 @@ class Orders extends Component {
   }
 }
 
-export default Orders;
+export default withErrorHandler(Orders, axios);
