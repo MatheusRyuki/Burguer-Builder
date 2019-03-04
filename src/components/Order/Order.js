@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Order.css';
 
-const order = (props) =>
+const order = (props) => {
   const ingredients = [];
 
   for (let ingredientName in props.ingredients) {
@@ -15,7 +15,7 @@ const order = (props) =>
     return <span
     key={ig.name}
     style={{
-      textTransform: 'capitalize'
+      textTransform: 'capitalize',
       display: 'inline-block',
       margin: '0 8px',
       border: '1px solid gray',
@@ -25,10 +25,10 @@ const order = (props) =>
 
   return (
     <div className={classes.Order}>
-      <p>Ingredientes: {ingredientOutput}<p/>
+      <p>Ingredientes: {ingredientOutput}</p>
       <p>Preço: <strong>R$ {props.price.toFixed(2)}</strong></p>
     </div>
   );
-);
+};
 
 export default order;

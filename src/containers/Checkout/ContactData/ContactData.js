@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from '../../components/UI/Button/Button';
+import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './ContactData.css';
 import axios from '../../../axios-orders';
@@ -37,7 +37,7 @@ class ContactData extends Component {
     axios.post('/orders.json', order)
       .then(response => {
         this.setState({ loading: false });
-        this.props.
+        this.props.history.push('/');
       })
       .catch(error => {
         this.setState({ loading: false });
@@ -45,7 +45,6 @@ class ContactData extends Component {
   }
 
   render () {
-    return (
       let form = (
         <form>
           <input className={classes.Input} type="text" name="name" placeholder="Seu nome" />
@@ -58,6 +57,7 @@ class ContactData extends Component {
       if (this.state.loading) {
         form = <Spinner />;
       }
+          return (
       <div className={classes.ContactData}>
         <h4>Coloque seus dados de contato</h4>
         {form}
