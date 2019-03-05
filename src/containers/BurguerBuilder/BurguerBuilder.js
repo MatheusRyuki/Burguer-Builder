@@ -135,7 +135,7 @@ class BurguerBuilder extends Component {
 
     return (
       <Aux>
-        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+        <Modal show={this.state.compravel} modalClosed={this.purchaseCancelHandler}>
           {orderSummary}
         </Modal>
         {burger}

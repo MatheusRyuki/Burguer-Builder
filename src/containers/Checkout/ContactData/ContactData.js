@@ -12,7 +12,7 @@ class ContactData extends Component {
         elementType: 'input',
         elementConfig: {
           type: 'text',
-          placeholder: 'Seu nome'
+          placeholder: 'Seu Nome'
         },
         value: ''
       },
@@ -69,9 +69,16 @@ class ContactData extends Component {
   orderHandler = (event) => {
     event.preventDefault();
     this.setState({ loading: true });
+    const formData = {};
+
+    for (let formElementIdentifier in this.state.orderForm) {
+        formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
+    }
+
     const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice
+      ingredients: this.props.ingredients,
+      price: this.props.price,
+      orderData: formData
     }
 
     axios.post('/orders.json', order)
@@ -89,7 +96,7 @@ class ContactData extends Component {
       ...this.state.orderForm
     };
     const updatedFormElement = {
-      ...updatedOrderForm[inputIdentifier];
+      ...updatedOrderForm[inputIdentifier]
     };
     updatedFormElement.value = event.target.value;
     updatedOrderForm[inputIdentifier] = updatedFormElement;
@@ -106,7 +113,7 @@ class ContactData extends Component {
         });
       }
       let form = (
-        <form>
+        <form onSubmit={this.orderHandler}>
           {formElementsArray.map(formElement => (
             <Input
               key={formElement.id}
