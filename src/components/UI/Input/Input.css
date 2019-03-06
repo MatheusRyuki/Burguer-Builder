@@ -15,6 +15,11 @@
   background-color: salmon;
 }
 
+.ValidationError {
+  color: red;
+  margin: 5px 0;
+} 
+
 .InputElement {
   outline: none;
   border: 1px solid #ccc;
