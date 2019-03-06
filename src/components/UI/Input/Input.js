@@ -3,16 +3,26 @@ import classes from './Input.css';
 
 const input = (props) => {
   let inputElement = null;
+  const inputClasses = [classes.InputElement];
+  let validationError = null;
+
+  if  (props.invalid && props.shouldValidate && props.touched) {
+    inputClasses.push(classes.Invalid);
+  }
+
+  if (props.invalid && props.touched) {
+    validationError = <p className={classes.ValidationError}>Por favor, digite um {props.valueType} válido!</p>;
+  }
 
   switch (props.elementType) {
     case ('input'):
-        inputElement = <input className={classes.InputElement}
+        inputElement = <input className={inputClasses.join(' ')}
           {...props.elementConfig}
           value={props.value}
           onChange={props.changed}/>;
         break;
     case ('textarea'):
-      inputElement = <textarea  className={classes.InputElement}
+      inputElement = <textarea  className={inputClasses.join(' ')}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed}/>;
@@ -32,12 +42,13 @@ const input = (props) => {
       );
       break;
     default:
-      inputElement = <input className={classes.InputElement} {...props.elementConfig} value={props.value}/>;
+      inputElement = <input className={inputClasses.join(' ')} {...props.elementConfig} value={props.value}/>;
   }
   return (
   <div className={classes.Input}>
     <label className={classes.Label}>{props.label}</label>
     {inputElement}
+    {validationError}
   </div>
   );
 };
