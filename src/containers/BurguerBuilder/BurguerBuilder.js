@@ -16,7 +16,7 @@ const INGREDIENT_PRICES = {
 };
 
 class BurguerBuilder extends Component {
-  componentDidMount () {
+  /* componentDidMount () {
     axios.get('ingredients.json')
       .then(response => {
         this.setState({ingredients: response.data});
@@ -24,7 +24,7 @@ class BurguerBuilder extends Component {
       .catch(error => {
         this.setState({error: true});
       });
-  }
+  } */
   state = {
     ingredients: null,
     totalPrice: 12,
