@@ -21,7 +21,6 @@ class BurguerBuilder extends Component {
       });
   } */
   state = {
-    compravel: false,
     purchasing: false,
     loading: false,
     error: false
@@ -35,7 +34,7 @@ class BurguerBuilder extends Component {
         .reduce((sum, el) => {
           return sum + el;
         }, 0);
-      this.setState({compravel: sum > 0});
+      return sum > 0;
   }
 
   purchaseCancelHandler = () => {
@@ -79,7 +78,7 @@ class BurguerBuilder extends Component {
             ingredientRemoved={this.props.onIngredientRemoved}
             disabled={disabledInfo}
             price={this.props.price}
-            purchasable={this.state.compravel}
+            purchasable={this.updatedPurchaseState(this.props.ings)}
             ordered={this.purchaseHandler}/>
           </Aux>
       );
