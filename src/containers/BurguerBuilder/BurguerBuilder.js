@@ -10,6 +10,11 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as burguerBuilderActions from '../../store/actions/index';
 
 class BurguerBuilder extends Component {
+
+  componentDidMount() {
+    this.props.onInitIngredients();
+  };
+
   state = {
     purchasing: false,
   };
@@ -45,7 +50,7 @@ class BurguerBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
     let orderSummary = null;
-    let burger = this.state.error ? <p> Os ingredientes não pode ser carregados </p> : <Spinner/>;
+    let burger = this.props.error ? <p> Os ingredientes não pode ser carregados </p> : <Spinner/>;
 
     if (this.props.ings) {
       burger = (
@@ -81,13 +86,15 @@ const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(burguerBuilderActions.addIngredient(ingName)),
     onIngredientRemoved: (ingName) => dispatch(burguerBuilderActions.removeIngredient(ingName)),
+    onInitIngredients: () => dispatch(burguerBuilderActions.initIngredients)
   };
 }
 
 const mapStateToProps = state => {
   return {
     ings: state.ingredients,
-    price: state.totalPrice
+    price: state.totalPrice,
+    error: state.error
   };
 }
 
