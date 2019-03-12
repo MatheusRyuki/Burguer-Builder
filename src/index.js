@@ -10,7 +10,7 @@ import burgerBuilderReducer from './store/reducer/bugerBuilder';
 import thunk from 'react-thunk';
 
 const store = createStore(burgerBuilderReducer, compose(
-  applyMiddleware(thunk);
+  applyMiddleware(thunk)
 ));
 
 const app = (
