@@ -6,7 +6,7 @@ import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
 import { connect } from 'react-redux';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../../store/actions/index'
+import * as actionTypes from '../../../store/actions/index';
 
 class ContactData extends Component {
   state = {
