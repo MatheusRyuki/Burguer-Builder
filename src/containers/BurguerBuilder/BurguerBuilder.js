@@ -8,11 +8,13 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as burguerBuilderActions from '../../store/actions/index';
+import axios from '../../axios-orders';
 
 class BurguerBuilder extends Component {
 
   componentDidMount() {
     this.props.onInitIngredients();
+    console.log(this.props.onInitIngredients());
   };
 
   state = {
@@ -92,9 +94,9 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    price: state.totalPrice,
-    error: state.error
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    error: state.burgerBuilder.error
   };
 }
 

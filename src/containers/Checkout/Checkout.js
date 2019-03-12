@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
@@ -15,7 +15,7 @@ class Checkout extends Component {
   }
 
   render() {
-    const summary = <Spinner />;
+    let summary = <Spinner />;
     if (this.props.ings) {
       summary = (
         <div>
@@ -37,7 +37,7 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients
+    ings: state.burgerBuilder.ingredients
   }
 };
 
