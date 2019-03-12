@@ -5,10 +5,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import burgerBuilderReducer from './store/reducer/bugerBuilder';
+import thunk from 'react-thunk';
 
-const store = createStore(burgerBuilderReducer);
+const store = createStore(burgerBuilderReducer, compose(
+  applyMiddleware(thunk);
+));
 
 const app = (
   <Provider store={store}>
