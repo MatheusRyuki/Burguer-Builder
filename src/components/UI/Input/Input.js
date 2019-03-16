@@ -11,7 +11,7 @@ const input = (props) => {
   }
 
   if (props.invalid && props.touched) {
-    validationError = <p className={classes.ValidationError}>Por favor, digite um {props.valueType} válido!</p>;
+    validationError = <p className={classes.ValidationError}>Por favor, digite um {props.elementConfig.type} válido!</p>;
   }
 
   switch (props.elementType) {
