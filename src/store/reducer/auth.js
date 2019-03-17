@@ -14,6 +14,13 @@ const authStart = (state, action ) => {
         loading: true});
 };
 
+const authLogout = (state, action) => {
+    return updateObject(state, {
+        token: null,
+        userId: null
+    })
+};
+
 const authSucess = (state, action) => {
     return updateObject(state, {
         token: action.idToken,
@@ -35,6 +42,7 @@ const reducer = (state = initialState, action) => {
         case actions.AUTH_START: return authStart(state, action);
         case actions.AUTH_SUCCESS: return authSucess(state, action)
         case actions.AUTH_FAIL: return authFail(state, action)
+        case actions.AUTH_LOGOUT: return authLogout(state, action)
         default:  return state;
     }
 };
