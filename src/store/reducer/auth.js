@@ -9,7 +9,9 @@ const initialState = {
 };
 
 const authStart = (state, action ) => {
-    return updateObject(state, {error: null, loading: true});
+    return updateObject(state, {
+        error: null, 
+        loading: true});
 };
 
 const authSucess = (state, action) => {
@@ -28,7 +30,7 @@ const authFail = (state, action) => {
     });
 };
 
-const reducer = (state, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actions.AUTH_START: return authStart(state, action);
         case actions.AUTH_SUCCESS: return authSucess(state, action)
