@@ -127,7 +127,7 @@ class Auth extends Component {
               {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
-                    <Button btnType="Success">CADASTRAR-SE</Button>
+                    <Button btnType="Success">{this.state.isSignup ? 'CADASTRA-SE' : 'LOGIN'}</Button>
                 </form>
                 <Button 
                   clicked={this.switchAuthModeHandler}
