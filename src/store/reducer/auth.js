@@ -5,7 +5,14 @@ const initialState = {
     token: null,
     userId: null,
     error: null,
-    loading: null
+    loading: null,
+    authRedirectPath: '/'
+};
+
+const  setAuthRedirect = (state, action) => {
+    return updateObject(state, {
+        authRedirectPath: action.path
+    });
 };
 
 const authStart = (state, action ) => {
@@ -39,10 +46,11 @@ const authFail = (state, action) => {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actions.AUTH_START: return authStart(state, action);
+        case actions.AUTH_START: return authStart(state, action)
         case actions.AUTH_SUCCESS: return authSucess(state, action)
         case actions.AUTH_FAIL: return authFail(state, action)
         case actions.AUTH_LOGOUT: return authLogout(state, action)
+        case actions.SET_AUTH_REDIRECT_PATH: return setAuthRedirect(state, action)
         default:  return state;
     }
 };
