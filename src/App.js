@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import BurguerBuilder from './containers/BurguerBuilder/BurguerBuilder';
 import Checkout from './containers/Checkout/Checkout';
@@ -36,4 +36,4 @@ const mapActions = dispatch  => {
     onTryAutoSignUp: () => dispatch(actions.authCheckState()) 
   };
 };
-export default connect(null, mapActions)(App);
+export default withRouter(connect(null, mapActions)(App));
