@@ -5,8 +5,13 @@ import BurguerBuilder from './containers/BurguerBuilder/BurguerBuilder';
 import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
-
+import { connect } from 'react-redux';
+import * as actions from './store/actions/index';
 class App extends Component {
+  componentDidMount () {
+    this.props.onTryAutoSignUp();
+  }
+
   render() {
     return (
       <div>
@@ -23,4 +28,9 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapActions = dispatch  => {
+  return {
+    onTryAutoSignUp: () => dispatch(actions.authCheckState());  
+  };
+};
+export default connect(null, mapActions)(App);
