@@ -6,6 +6,7 @@ import classes from './Auth.css';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import { updateObject } from '../../shared/utility';
 
 class Auth extends Component {
     state = {
@@ -71,15 +72,13 @@ class Auth extends Component {
       }
     
       inputChangedHandler = (event, controlName) => {
-        const updatedControls = {
-          ...this.state.controls,
-          [controlName]: {
-            ...this.state.controls[controlName],
+        const updatedControls = updateObject(this.state.controls,{
+          [controlName]: updateObject(this.state.controls[controlName], {
             value: event.target.value,
             valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
             touched: true
-          }
-        };
+          })
+        });
         this.setState({controls: updatedControls})
       }
       
