@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, lazy } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import BurguerBuilder from './containers/BurguerBuilder/BurguerBuilder';
-import Checkout from './containers/Checkout/Checkout';
-import Orders from './containers/Orders/Orders';
-import Auth from './containers/Auth/Auth';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
-import Logout from './containers/Auth/Logout/Logout';
 
 class App extends Component {
   componentDidMount () {
@@ -15,9 +11,15 @@ class App extends Component {
   }
 
   render() {
+    
+    const Auth = lazy(() => import('./containers/Auth/Auth'));
+    const Orders = lazy(() => import('./containers/Orders/Orders'));
+    const Checkout = lazy(() => import('./containers/Checkout/Checkout'));
+    const Logout = lazy(() => import('./containers/Auth/Logout/Logout'));
 
     let routes = (
       <Switch>
+        <Route path='/auth' component={Auth} />
       <Route path="/" exact component={BurguerBuilder} />
       <Redirect to="/" />
       </Switch>

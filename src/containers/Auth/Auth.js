@@ -107,7 +107,7 @@ class Auth extends Component {
         }
 
         let authRedirect = null;
-        if (this.props.isAuthenticated) {
+        if (this.props.isAuthenticated === true) {
           authRedirect = <Redirect to={this.props.authRedirectPath} />
         }
 

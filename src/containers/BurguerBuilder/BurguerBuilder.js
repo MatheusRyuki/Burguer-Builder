@@ -13,7 +13,7 @@ import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 class BurguerBuilder extends Component {
 
   componentDidMount() {
-     
+    console.log(this.props.isAuthenticated)
     this.props.onInitIngredients();
   };
 
