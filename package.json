@@ -121,10 +121,7 @@
       "jsx",
       "node"
     ],
-    "watchPlugins": [
-      "/home/ifpa/Documentos/Burguer-Builder/node_modules/jest-watch-typeahead/filename.js",
-      "/home/ifpa/Documentos/Burguer-Builder/node_modules/jest-watch-typeahead/testname.js"
-    ]
+    "watchPlugins": []
   },
   "babel": {
     "presets": [

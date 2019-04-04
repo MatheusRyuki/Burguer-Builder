@@ -9,9 +9,17 @@ configure({
 });
 
 describe('Componente de NavigationItems', () => {
-    it('Deve renderizar dois itens', () => {
-        const wrapper = shallow(<NavigationItems />);
+    let wrapper;
 
+    beforeEach (() => {
+        wrapper = shallow(<NavigationItems />);
+    });
+    it('Deve renderizar dois itens', () => {
         expect(wrapper.find(NavigationItem)).toHaveLength(2);
+    });
+
+    it('Deve renderizar três itens quando tiver logado', () => {
+        wrapper.setProps({isAuthenticated: true});
+        expect(wrapper.find(NavigationItem)).toHaveLength(3);
     });
 });
