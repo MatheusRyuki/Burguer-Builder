@@ -14,6 +14,7 @@ describe('Componente de NavigationItems', () => {
     beforeEach (() => {
         wrapper = shallow(<NavigationItems />);
     });
+
     it('Deve renderizar dois itens', () => {
         expect(wrapper.find(NavigationItem)).toHaveLength(2);
     });
@@ -22,4 +23,9 @@ describe('Componente de NavigationItems', () => {
         wrapper.setProps({isAuthenticated: true});
         expect(wrapper.find(NavigationItem)).toHaveLength(3);
     });
+
+    it('Deve ter a opçãp de Logout quando tiver logado', () => {
+        wrapper.setProps({isAuthenticated: true});
+        expect(wrapper.contains(<NavigationItem link="/logout">Sair</NavigationItem>)).toEqual(true);
+    })
 });
