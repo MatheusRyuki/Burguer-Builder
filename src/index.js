@@ -10,6 +10,8 @@ import burgerBuilderReducer from './store/reducer/burgerBuilder';
 import thunk from 'redux-thunk';
 import orderReducer from './store/reducer/order';
 import authReducer from './store/reducer/auth';
+import createSagaMiddleware from 'redux-saga';
+import { logoutSaga } from './store/sagas/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -19,9 +21,13 @@ const rootReducer = combineReducers({
   auth: authReducer
 });
 
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(rootReducer, composeEnhancers(
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, sagaMiddleware)
 ));
+
+sagaMiddleware.run(logoutSaga);
 
 const app = (
   <Provider store={store}>
