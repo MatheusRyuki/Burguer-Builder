@@ -34,11 +34,8 @@ export const authSuccess = (token, userId) => {
 };
 
 export const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expirationDate');
-    localStorage.removeItem('userId');
     return {
-        type: actions.AUTH_LOGOUT
+        type: actions.AUTH_INITIATE_LOGOUT
     };
 };
 
