@@ -1,5 +1,4 @@
 import * as actions from './actions';
-import axios from '../../axios-orders';
 
 export const authStart = () => {
     return {
