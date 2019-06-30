@@ -1,13 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
-import BurguerBuilder from './containers/BurguerBuilder/BurguerBuilder';
-import Checkout from './containers/Checkout/Checkout';
-import Orders from './containers/Orders/Orders';
-import Auth from './containers/Auth/Auth';
 import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
-import Logout from './containers/Auth/Logout/Logout';
+
+const Checkout = React.lazy(() => {
+  return import('./containers/Checkout/Checkout');
+});
+
+const Logout = React.lazy(() => {
+  return import('./containers/Auth/Logout/Logout');
+});
+
+const Auth = React.lazy(() => {
+  return import('./containers/Auth/Auth');
+});
+
+const BurguerBuilder = React.lazy(() => {
+  return import('./containers/BurguerBuilder/BurguerBuilder');
+});
+
+const Orders = React.lazy(() => {
+  return import('./containers/Orders/Orders');
+});
 
 const app = props => {
   useEffect(() => {
@@ -16,8 +31,8 @@ const app = props => {
 
     let routes = (
       <Switch>
-        <Route path='/auth' component={Auth} />
-      <Route path="/" exact component={BurguerBuilder} />
+        <Route path='/auth' render={() => <Auth/>} />
+      <Route path="/" exact render={() => <BurguerBuilder/>} />
       <Redirect to="/" />
       </Switch>
     );
@@ -25,11 +40,11 @@ const app = props => {
     if (props.isAuthenticated) {
       routes = (
         <Switch>
-            <Route path='/orders' component={Orders} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/logout" component={Logout} />
-            <Route path='/auth' component={Auth} />
-            <Route path="/" exact component={BurguerBuilder} />
+            <Route path='/orders' render={() => <Orders/>} />
+            <Route path="/checkout" render={() => <Checkout/>} />
+            <Route path="/logout" render={() => <Logout/>} />
+            <Route path='/auth' render={() => <Auth/>} />
+            <Route path="/" exact render={() => <BurguerBuilder/>  } />
             <Redirect to="/" />
           </Switch>
       );
@@ -37,7 +52,9 @@ const app = props => {
     return (
       <div>
         <Layout>
-          {routes}
+          <Suspense fallback={'carregando...'}>
+           {routes}
+          </Suspense>
         </Layout>
       </div>
     );
