@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
 import BurguerBuilder from './containers/BurguerBuilder/BurguerBuilder';
@@ -9,12 +9,10 @@ import { connect } from 'react-redux';
 import * as actions from './store/actions/index';
 import Logout from './containers/Auth/Logout/Logout';
 
-class App extends Component {
-  componentDidMount () {
-    this.props.onTryAutoSignUp();
-  }
-
-  render() {
+const app = props => {
+  useEffect(() => {
+    props.onTryAutoSignUp();
+  }, []);
 
     let routes = (
       <Switch>
@@ -24,7 +22,7 @@ class App extends Component {
       </Switch>
     );
 
-    if (this.props.isAuthenticated) {
+    if (props.isAuthenticated) {
       routes = (
         <Switch>
             <Route path='/orders' component={Orders} />
@@ -43,7 +41,6 @@ class App extends Component {
         </Layout>
       </div>
     );
-  }
 }
 
 const mapStateToProps = state => {
@@ -57,4 +54,4 @@ const mapActions = dispatch  => {
     onTryAutoSignUp: () => dispatch(actions.authCheckState()) 
   };
 };
-export default withRouter(connect(mapStateToProps, mapActions)(App));
+export default withRouter(connect(mapStateToProps, mapActions)(app));
